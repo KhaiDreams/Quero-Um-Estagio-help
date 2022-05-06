@@ -8,12 +8,6 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD
 })
 
-let query = "SELECT * FROM posts;"
+if(pool) console.log(`DB connected. HOST: ${process.env.DB_HOST}. DATABASE: ${process.env.DB_NAME}`)
 
-pool.execute(query, function(err, res){
-    if(err) throw err
-
-    console.log(res)
-})
-
-module.exports = pool.promise()
+module.exports = pool
