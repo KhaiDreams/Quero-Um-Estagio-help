@@ -5,11 +5,11 @@ const cors = require("cors")
 const app = express()
 
 //IMPORTING - INTERNAL
-const db = "XANDE VAI IMPORTAR A DATABASE POR AQUI E DEPOIS QUE SETTAR ELA"
-const routes = require("./routes")
+const db = require("./config/database")
+const routes = require("./routes/index")
 
 //SETTING DB
-
+db.pool
 
 //SETTING CORS
 const allowedOrigins = [
@@ -21,10 +21,8 @@ app.use(cors({
     origin: (origin, callback) => {
         let allowed = true
 
-        //mobile apps
-        if(!origin) allowed = true
-        //servers
-        if(!allowedOrigins.includes(origin)) allowed = false
+        if(!origin) allowed = true //mobile apps
+        if(!allowedOrigins.includes(origin)) allowed = false //servers
 
         callback(null, allowed)
     }
