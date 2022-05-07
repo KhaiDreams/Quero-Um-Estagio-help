@@ -1,8 +1,7 @@
 //IMPORTING
-const express = require("express")
+const express = require("express"), app = express()
 const cors = require("cors")
-
-const app = express()
+require("dotenv").config()
 
 //IMPORTING - INTERNAL
 const db = require("./config/database")
