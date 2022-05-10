@@ -8,3 +8,5 @@ export default function Header() {
         </>
     )
 }
+
+// OUTROS POSSÍVEIS COMPONENTES: drawer lateral do MENU; setinha que leva pro topo da página
