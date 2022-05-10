@@ -8,15 +8,7 @@ export default function RegisterUser() {
     const [values, setValues] = useState({})
 
     function handleChange(e) {
-        setValues({ [e.target.name]: e.target.value})
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        console.log(values)
-
-        //axios.post("http://localhost:8080", values)
+        setValues({ ...values, [e.target.id]: e.target.value})
     }
 
     //AUTOCOMPLETING FROM ZIP
@@ -39,6 +31,12 @@ export default function RegisterUser() {
         setCity(localidade)
         setState(uf)
     }
+
+    //SUBMITING
+    function handleSubmit(e) {
+        e.preventDefault()
+        axios.post("http://localhost:8080", values)
+    }
         
     return (
         <TemplateDefault>
@@ -48,43 +46,43 @@ export default function RegisterUser() {
                 <form onSubmit={handleSubmit}>
                     <div className="inputbox">
                         <label htmlFor="name">Nome</label>
-                        <input type="text" id="name" required onChange={handleChange} />
+                        <input type="text" id="name"  onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" required />
+                        <input type="text" id="password" onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">E-mail</label>
-                        <input type="text" id="email" required />
+                        <input type="text" id="email" onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="cellphone">Celular</label>
-                        <input type="text" id="cellphone" required />
+                        <input type="text" id="cellphone" onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="zip">CEP</label>
-                        <input type="text" id="zip" required onBlur={e => searchZIP(e.target.value)} />
+                        <input type="text" id="zip" onChange={e => handleChange(e)} onBlur={e => searchZIP(e.target.value)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="address">Endereço</label>
-                        <input type="text" id="address" required defaultValue={address} />
+                        <input type="text" id="address" defaultValue={address} onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="number">Nº</label>
-                        <input type="text" id="number" required />
+                        <input type="text" id="number" onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="neighborhood">Bairro</label>
-                        <input type="text" id="neighborhood" required defaultValue={neighborhood} />
+                        <input type="text" id="neighborhood"  defaultValue={neighborhood} onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="city">Cidade</label>
-                        <input type="text" id="city" required defaultValue={city} />
+                        <input type="text" id="city"  defaultValue={city} onChange={e => handleChange(e)} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="state">Estado</label>
-                        <input type="text" id="state" required defaultValue={state} />
+                        <input type="text" id="state"  defaultValue={state} onChange={e => handleChange(e)} />
                     </div>
 
                     <button type="submit">Salvar</button>

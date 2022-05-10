@@ -3,7 +3,8 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-    console.log(req)
+    const values = req.body
+    console.log(values)
     res.send("FUNÇÃO POST")
 }
 

@@ -3,19 +3,17 @@ const express = require("express"), app = express()
 const cors = require("cors")
 require("dotenv").config()
 
-//IMPORTING - INTERNAL
 const db = require("./config/database")
 const routes = require("./routes/index")
 
-//SETTING DB
+//SETTING
 db.pool
 
-//SETTING CORS
 const allowedOrigins = [
     "ENDEREÇO DO FRONTEND QUE VAI FAZER AS REQUISIÇÕES",
-    "http://localhost:5500" //tests html address (postman)
+    "http://localhost:3000",
+    "http://localhost:5500"
 ]
-
 app.use(cors({
     origin: (origin, callback) => {
         let allowed = true
