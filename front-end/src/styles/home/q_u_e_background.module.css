@@ -1,3 +1,8 @@
+.q_u_e_background {
+    height: 88vh;
+    background-color: rgb(0, 0, 0) !important;
+}
+
 .container_q_u_e, .container_por_favor {
     height: 50%;
     width: 100%;
@@ -15,10 +20,6 @@
     justify-content: flex-end;
 }
 
-.background {
-    height: 200vh;
-    background-color: rgb(0, 0, 0) !important;
-}
 
 .container_top { 
     width: 100%;;  

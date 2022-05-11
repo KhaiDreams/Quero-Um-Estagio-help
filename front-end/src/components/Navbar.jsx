@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import imgreact from '../public/images/reacticon.png';
 
-import styles from '../styles/navbar.module.css';
+import styles from '../styles/navbar/navbar.module.css';
 
 export default function Navbar() {
     return (
@@ -23,7 +23,7 @@ export default function Navbar() {
                         </li>
 
                         <li className={styles.li}>
-                            <Link href="portfolio" className={styles.texto}>Portfolio</Link>
+                            <Link href="portfolio" className={styles.texto}>Projects</Link>
                         </li>
 
                         <li className={styles.li}>
@@ -40,9 +40,9 @@ export default function Navbar() {
 
                             <div className={styles.button}>
                                 <li className={styles.li_loginregister}>
-                                    <Link href="register" className={styles.texto_loginregister}>Register</Link>
+                                    <Link href="projects/registerUser" className={styles.texto_loginregister}>Register</Link>
                                 </li>  
-                            </div> 
+                            </div>
                         </div> 
 
 

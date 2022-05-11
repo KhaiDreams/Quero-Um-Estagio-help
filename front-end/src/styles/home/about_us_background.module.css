@@ -1,0 +1,16 @@
+.about_us_background {
+    height: 88vh;
+    background-color: rgb(151, 70, 70) !important;
+    padding: 30px;
+    position: relative;
+}
+
+.container_about_us {
+    position: absolute;
+    margin: 0 0 0 9.5%;
+
+    width: 160vh;  
+    height: 500px;
+
+    background-color: rgb(23, 183, 58) !important;
+}
