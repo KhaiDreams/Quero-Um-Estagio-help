@@ -31,6 +31,10 @@
     margin-left: 12%;
 }
 
+.h1_q_u_e {
+    text-shadow: 0px 0px 18px rgb(255 255 255 / 22%);
+}
+
 .h1_por_favor {
     float: right;
     margin-right: 15%;
@@ -39,5 +43,22 @@
 .help_color {
     position: absolute;
     color: rgb(187, 23, 23);
-    margin: 0px 0px 0px -2px
+    margin: 0px 0px 0px -2px;
+    text-shadow: 0px 0px 10px rgba(255, 0, 0, 0.311);
+}
+
+.container_gif {
+    background-color: #ff000000 !important;
+    position: absolute;
+    filter: invert(100%);
+    mix-blend-mode: lighten;
+    display: flex;
+    justify-content: flex-end;
+    justify-items: normal;
+}
+
+.gif_mouse {
+    max-width: 100%;
+    width: 75%;
+    filter: saturate(200%);
 }

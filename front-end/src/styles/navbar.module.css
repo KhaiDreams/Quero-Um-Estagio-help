@@ -25,6 +25,7 @@
     height: 40px;
     max-width: 100%;
     cursor: pointer;
+    filter: brightness(10);
 }
 
 .texto {
