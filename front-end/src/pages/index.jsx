@@ -1,6 +1,6 @@
 import TemplateDefault from "../templates/Default"
 
-import gif from '../public/mouse.gif';
+import gif from '../public/images/mouse.gif';
 
 import styles from "../styles/home.module.css"
 

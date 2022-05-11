@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import imgreact from '../public/reacticon.png';
+import imgreact from '../public/images/reacticon.png';
 
 import styles from '../styles/navbar.module.css';
 

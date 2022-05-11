@@ -6,13 +6,19 @@ require("dotenv").config()
 const db = require("./config/database")
 const routes = require("./routes/index")
 
-//SETTING
+//ENABLING SERVER TO RECEIVE JSON DATA VIA POST METHOD
+app.use(express.json())
+
+//DEFINING ROUTES
+app.use("/", routes)
+
+//SETTING DB
 db.pool
 
+//SETTING CORS
 const allowedOrigins = [
-    "ENDEREÇO DO FRONTEND QUE VAI FAZER AS REQUISIÇÕES",
-    "http://localhost:3000",
-    "http://localhost:5500"
+    "http://", //actual online url
+    "http://localhost:3000", "http://localhost:5500" //test servers
 ]
 app.use(cors({
     origin: (origin, callback) => {
@@ -24,12 +30,6 @@ app.use(cors({
         callback(null, allowed)
     }
 }))
-
-//ENABLING SERVER TO RECEIVE JSON DATA VIA POST METHOD
-app.use(express.json())
-
-//DEFINING ROUTES
-app.use("/", routes)
 
 //SETTING SERVER
 const port = process.env.port || 8080

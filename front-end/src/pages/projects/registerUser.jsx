@@ -11,6 +11,7 @@ export default function RegisterUser() {
         setValues({ ...values, [e.target.id]: e.target.value })
     }
 
+    //BUG REPORT: autocompleted inputs won't triggger onChange, not having their values saved and sent to backend
     //AUTOCOMPLETING FROM ZIP
     const [address, setAddress] = useState("")
     const [neighborhood, setNeighborhood] = useState("")

@@ -6,9 +6,8 @@ async function get(req, res) {
 
 async function post(req, res) {
     const data = req.body
-    console.log(data)
-
     let user = new User(data)
+    
     user = await user.registerUser()
         .then(() => res.send("User registered successfully!"))
         .catch(err => res.send(`Failed to register user - ERROR: ${err}`))
