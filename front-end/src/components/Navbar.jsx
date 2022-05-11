@@ -1,43 +1,55 @@
 import Link from 'next/link';
 
+import imgreact from '../public/reacticon.png';
+
 import styles from '../styles/navbar.module.css';
 
 export default function Navbar() {
     return (
         <>
-            <nav className={styles.background}>
-                <div className={styles.menutexto_container}>
-                    <h1 className={styles.menutexto}>MENU</h1>
-                </div>
-
-                    <div className={styles.menuall}>
+            <div className={styles.background}>
+                <nav className={styles.navbar_content}>
+                    <ul className={styles.ul}>
                         <Link href="/">
-                            <ul className={styles.menuitens_ul}>
-                                <li className={styles.menuitens_li}>Home</li>
-                            </ul>
+                            <img src={imgreact.src} alt="LOGO" className={styles.imagem} />
                         </Link>
 
+                        <li className={styles.li}>
+                            <Link href="about" className={styles.texto}>About</Link>
+                        </li>
 
-                        <Link href="/">
-                            <ul className={styles.menuitens_ul}>
-                                <li className={styles.menuitens_li}>About</li>
-                            </ul>
-                        </Link>
+                        <li className={styles.li}>
+                            <Link href="services" className={styles.texto}>Services</Link>
+                        </li>
+
+                        <li className={styles.li}>
+                            <Link href="portfolio" className={styles.texto}>Portfolio</Link>
+                        </li>
+
+                        <li className={styles.li}>
+                            <Link href="contact-us" className={styles.texto}>Contact Us</Link>
+                        </li>
 
 
-                        <Link href="/">
-                            <ul className={styles.menuitens_ul}>
-                                <li className={styles.menuitens_li}>Projects</li>
-                            </ul>
-                        </Link>
+                        <div className={styles.content_loginregister}>
+                            <div className={styles.button}>
+                                <li className={styles.li_loginregister}>
+                                    <Link href="login" className={styles.texto_loginregister}>Login</Link>
+                                </li>  
+                            </div>   
 
-                        <Link href="/">
-                            <ul className={styles.menuitens_ul}>
-                                <li className={styles.menulogin_li}>Login</li>
-                            </ul>
-                        </Link>
-                    </div>
-            </nav>
+                            <div className={styles.button}>
+                                <li className={styles.li_loginregister}>
+                                    <Link href="register" className={styles.texto_loginregister}>Register</Link>
+                                </li>  
+                            </div> 
+                        </div> 
+
+
+
+                    </ul>
+                </nav>
+            </div>
         </>
     )
 }
