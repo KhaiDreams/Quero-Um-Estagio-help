@@ -40,7 +40,7 @@ export default function Navbar() {
 
                             <div className={styles.button}>
                                 <li className={styles.li_loginregister}>
-                                    <Link href="projects/registerUser" className={styles.texto_loginregister}>Register</Link>
+                                    <Link href="user/register" className={styles.texto_loginregister}>Register</Link>
                                 </li>  
                             </div>
                         </div> 

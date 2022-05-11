@@ -3,7 +3,7 @@ import axios from "axios"
 
 import TemplateDefault from "../../templates/Default"
 
-export default function RegisterUser() {
+export default function formCEP() {
     //SAVING DATA FROM FORM
     const [values, setValues] = useState({})
 
@@ -11,8 +11,8 @@ export default function RegisterUser() {
         setValues({ ...values, [e.target.id]: e.target.value })
     }
 
-    //BUG REPORT: autocompleted inputs won't triggger onChange, not having their values saved and sent to backend
     //AUTOCOMPLETING FROM ZIP
+        //BUG: autocompleted inputs won't triggger onChange
     const [address, setAddress] = useState("")
     const [neighborhood, setNeighborhood] = useState("")
     const [city, setCity] = useState("")

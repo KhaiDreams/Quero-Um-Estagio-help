@@ -10,29 +10,15 @@ class User {
 
         const sql = `
             INSERT INTO users(
-                name,
-                password,
+                user,
                 email,
-                cellphone,
-                zip,
-                address,
-                number,
-                neighborhood,
-                city,
-                state,
+                password,
                 register_date
             ) 
             VALUES(
-                '${this.data.name}',
-                '${this.data.password}',
+                '${this.data.user}',
                 '${this.data.email}',
-                '${this.data.cellphone}',
-                '${this.data.zip}',
-                '${this.data.address}',
-                '${this.data.number}',
-                '${this.data.neighborhood}',
-                '${this.data.city}',
-                '${this.data.state}',
+                '${this.data.password}',
                 '${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}'
             )
         `
