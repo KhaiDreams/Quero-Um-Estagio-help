@@ -1,6 +1,8 @@
 import { useState } from "react"
 import axios from "axios"
 
+import styles from "../../styles/users/register/register.module.css"
+
 import TemplateDefault from "../../templates/Default"
 
 export default function Register() {
@@ -53,20 +55,20 @@ export default function Register() {
                 <form onSubmit={handleSubmit}>
                     <div className="inputbox">
                         <label htmlFor="name">Usuário</label>
-                        <input type="text" id="name" required onChange={e => handleChange(e)} />
+                        <input type="text" id="name" required onChange={e => handleChange(e)} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">E-mail</label>
-                        <input type="text" id="email" required onChange={e => handleChange(e)} />
+                        <input type="text" id="email" required onChange={e => handleChange(e)} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handlePassword} />
+                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handlePassword} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password2">Senha</label>
-                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handlePassword2} />
+                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handlePassword2} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
                     </div>
 
