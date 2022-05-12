@@ -4,6 +4,7 @@ import axios from "axios"
 import styles from "../../styles/users/register/register.module.css"
 
 import TemplateDefault from "../../templates/Default"
+import { handle } from "express/lib/router"
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Register() {
@@ -15,38 +16,38 @@ export default function Register() {
     }
 
     //VALIDATING FORM
-    const validation = {
-        emailValid: false,
-        passwordValid: false, 
-        passwordsMatch: false,
+    const [validation, setValidation] = useState({
+        emailValid: false, passwordValid: false, passwordsMatch: false
+    })
+
+    function handleInput() {
+        handleEmail()
+        handlePassword()
+        handlePasswordsMatching()
     }
 
     function handleEmail() {
         const { email="" } = values
-
         const emailIsValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)
 
-        emailIsValid
-            ? validation.emailValid = true
-            : validation.emailValid = false
+        setValidation({ ...validation, emailValid: emailIsValid })
     }
 
     function handlePassword() {
-        const { password="pw" } = values
-        
-        if(
-            password.length >= 5 && 
-            /[A-Z]/.test(password) && 
-            /[@$!%*?&_-{}'"/~]/.test(password)
-        ) validation.passwordValid = true
-        else validation.passwordValid = false
+        const { password="" } = values
+        const passwordIsValid =
+            (password.length >= 5 && /[A-Z]/.test(password) && /[@$!%*?&_-{}'"/~]/.test(password)) 
+            ? true 
+            : false
+
+        setValidation({ ...validation, passwordValid: passwordIsValid })
     }
 
-    function handlePassword2() {
+    function handlePasswordsMatching() {
         const { password="pw", password2="pw2" } = values
+        const passwordsMatching = password === password2
 
-        if(password === password2) validation.passwordsMatch = true
-        else validation.passwordsMatch = false
+        setValidation({ ...validation, passwordsMatch: passwordsMatching })
     }
 
     //SUBMITING
@@ -79,24 +80,23 @@ export default function Register() {
             <main className="container">
                 <h1>Cadastrar</h1>
 
-                <form onSubmit={handleSubmit}>
+                <form autoComplete="off" onSubmit={handleSubmit}>
                     <div className="inputbox">
                         <label htmlFor="name">Usuário</label>
                         <input type="text" id="name" required onChange={e => handleChange(e)} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">E-mail</label>
-                        <input type="text" id="email" required onChange={e => handleChange(e)} onBlur={handleEmail} className={styles.colorfont} />
+                        <input type="text" id="email" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handlePassword} className={styles.colorfont} />
+                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password2">Senha</label>
-                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handlePassword2} className={styles.colorfont} />
-                        <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
+                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
                     </div>
 
                     <button type="submit">Cadastrar</button>
