@@ -30,7 +30,12 @@ export default function Home() {
                     </div>  
                                     
                 </div>
+
+                <div className={styles2.div_merecemos}>
+                    <h1 className={styles2.h1_merecemos}>Por que nós merecemos!</h1>
+                </div>
             </div>
+
 
             <div className={styles2.about_us_background}>
 
@@ -40,23 +45,34 @@ export default function Home() {
                             <img src={cardvictor.src} alt="" className={styles2.cards}/>
                         <p className={styles2.p_name_victor}>VICTOR</p>
                         <p className={styles2.p_function_victor}>FRONT-END</p>
+                        <p className={styles2.p_description_victor}>
+                            Lorem, need to be fixed Lorem, need to be fixed Lorem, need to be fixed
+                        </p>
                     </div>
 
                     <div className={styles2.div_equip}>
                             <img src={cardbruno.src} alt="" className={styles2.cards}/>
                         <p className={styles2.p_name_bruno}>BRUNO</p>
                         <p className={styles2.p_function_bruno}>FULL-STACK</p>
+                        <p className={styles2.p_description_bruno}>
+                            Lorem, need to be fixed Lorem, need to be fixed Lorem, need to be fixed
+                        </p>
                     </div>
 
                     <div className={styles2.div_equip}>
                                 <img src={cardalexandre.src} alt="" className={styles2.cards}/>
                         <p className={styles2.p_name_alexandre}>ALEXANDRE</p>
                         <p className={styles2.p_function_alexandre}>BACK-END</p>
+                        <p className={styles2.p_description_alexandre}>
+                            Lorem, need to be fixed Lorem, need to be fixed Lorem, need to be fixed
+                        </p>
                     </div>
 
                 </div>
 
             </div>
+
+            <div className={styles2._background} />
 
         </TemplateDefault>
     )
