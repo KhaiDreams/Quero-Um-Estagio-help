@@ -14,12 +14,11 @@
 }
 
 .container_por_favor {
-    padding: 0 0 30px 0;
+    padding: 0 0 70px 0;
     display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    flex-direction: row-reverse
 }
-
 
 .container_top { 
     width: 100%;;  
@@ -63,7 +62,7 @@
 
 .gif_mouse {
     max-width: 100%;
-    width: 75%;
+    width: 60%;
     filter: saturate(200%);
 
     -webkit-user-drag: none;
