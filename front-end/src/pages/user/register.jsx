@@ -86,29 +86,17 @@ export default function Register() {
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">E-mail</label>
-<<<<<<< HEAD
-                        <input type="text" id="email" required onChange={e => handleChange(e)} onBlur={handleEmail} />
-                    </div>
-                    <div className="inputbox">
-                        <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" autoComplete="off" required onChange={e => handleChange(e)} onBlur={handlePassword} />
-=======
-                        <input type="text" id="email" required onChange={e => handleChange(e)} className={styles.colorfont} />
+                        <input type="text" id="email" required onChange={e => handleChange(e)} onBlur={handleEmail} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password">Senha</label>
                         <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handlePassword} className={styles.colorfont} />
->>>>>>> 4d7786ce0c6c82c7e685072851e926449ede8a94
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password2">Senha</label>
-<<<<<<< HEAD
-                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handlePassword2} />
-=======
                         <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handlePassword2} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
->>>>>>> 4d7786ce0c6c82c7e685072851e926449ede8a94
                     </div>
 
                     <button type="submit">Cadastrar</button>
