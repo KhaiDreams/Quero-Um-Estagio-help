@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import axios from "axios"
 
 import styles from "../../styles/users/register/register.module.css"
@@ -16,38 +16,44 @@ export default function Register() {
     }
 
     //VALIDATING FORM
-    const [validation, setValidation] = useState({
-        emailValid: false, passwordValid: false, passwordsMatch: false
-    })
+    const [validation, setValidation] = useState({ validEmail: false, validPassword: false, passwordsMatch: false })
 
-    function handleInput() {
+    useEffect(() => {
         handleEmail()
         handlePassword()
-        handlePasswordsMatching()
-    }
+        handlePassword2()
+    }, [values])
 
     function handleEmail() {
-        const { email="" } = values
-        const emailIsValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)
+        const { email } = values
+        const emailIsValid = /[\w]+@[\w]+.(com|br|net)/.test(email)
 
-        setValidation({ ...validation, emailValid: emailIsValid })
+        setValidation(prevState => ({ 
+            ...prevState,
+            validEmail: emailIsValid
+        }))
     }
-
     function handlePassword() {
         const { password="" } = values
-        const passwordIsValid =
-            (password.length >= 5 && /[A-Z]/.test(password) && /[@$!%*?&_-{}'"/~]/.test(password)) 
-            ? true 
-            : false
+        const passwordIsValid = (
+            password.length >= 5 &&
+            /['-="!@#$%¨&*()_+]/.test(password) &&
+            /[A-Z]/.test(password)
+        )
 
-        setValidation({ ...validation, passwordValid: passwordIsValid })
+        setValidation(prevState => ({ 
+            ...prevState,
+            validPassword: passwordIsValid
+        }))
     }
+    function handlePassword2() {
+        const { password, password2 } = values
+        const validPassword2 = password === password2
 
-    function handlePasswordsMatching() {
-        const { password="pw", password2="pw2" } = values
-        const passwordsMatching = password === password2
-
-        setValidation({ ...validation, passwordsMatch: passwordsMatching })
+        setValidation(prevState => ({ 
+            ...prevState,
+            passwordsMatch: validPassword2
+        }))
     }
 
     //SUBMITING
@@ -55,19 +61,26 @@ export default function Register() {
         e.preventDefault()
 
         for(let check in validation){
-            if(validation[check] === false){
-                if(check === "emailValid") alert("Insira um email válido!")
-                if(check === "passwordValid") alert("Insira uma senha válida! (ao menos 5 caracteres, 1 caractere especial e uma letra maiúscula)")
-                if(check === "passwordsMatch") alert("As senhas não são iguais!")
+            if(!validation[check]){
+                switch(check){
+                    case "validEmail":
+                        alert("Insira um email válido!")
+                        break
+                    case "validPassword":
+                        alert("Insira uma senha válida!")
+                        break
+                    case "passwordsMatch":
+                        alert("As senhas devem coincidir!")
+                        break
+                }
                 return
             }
         }
 
-        alert("Form enviado!")
-        // delete values.password2
-        // axios.post("http://localhost:8080", values)
-        // .then(res => console.log(res.data))
-        // .catch(res => console.log(res)) 
+        delete values.password2
+        axios.post("http://localhost:8080", values)
+        .then(res => console.log(res.data))
+        .catch(res => console.log(res))
     }
 
     //TRIGGER PASSWORD VIEWING
@@ -87,16 +100,16 @@ export default function Register() {
                     </div>
                     <div className="inputbox">
                         <label htmlFor="email">E-mail</label>
-                        <input type="text" id="email" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
+                        <input type="text" id="email" required onChange={e => handleChange(e)} className={styles.colorfont} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
+                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password2">Senha</label>
-                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} onBlur={handleInput} className={styles.colorfont} />
+                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.colorfont} />
                     </div>
 
                     <button type="submit">Cadastrar</button>
