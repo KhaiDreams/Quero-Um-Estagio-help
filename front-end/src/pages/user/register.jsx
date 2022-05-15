@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-import styles from "../../styles/users/register/register.module.css"
-
 import TemplateDefault from "../../templates/Default"
-import { handle } from "express/lib/router"
+
+import styles from "../../styles/users/register/register.module.css"
+import eyeIcon from '../public/images/eye-solid.svg'
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Register() {
@@ -26,7 +26,7 @@ export default function Register() {
 
     function handleEmail() {
         const { email } = values
-        const emailIsValid = /[\w]+@[\w]+.(com|br|net)/.test(email)
+        const emailIsValid = /[\w]+@[\w]+.(com|br|net)$/.test(email)
 
         setValidation(prevState => ({ 
             ...prevState,
@@ -77,6 +77,7 @@ export default function Register() {
             }
         }
 
+
         delete values.password2
         axios.post("http://localhost:8080", values)
         .then(res => console.log(res.data))
@@ -106,6 +107,7 @@ export default function Register() {
                         <label htmlFor="password">Senha</label>
                         <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} className={styles.colorfont} />
                         <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
+                        <img src={eyeIcon.src} />
                     </div>
                     <div className="inputbox">
                         <label htmlFor="password2">Senha</label>
