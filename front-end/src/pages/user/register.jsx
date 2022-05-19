@@ -4,7 +4,8 @@ import axios from "axios"
 import TemplateDefault from "../../templates/Default"
 
 import styles from "../../styles/users/register/register.module.css"
-import eyeIcon from '../public/images/eye-solid.svg'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons"
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Register() {
@@ -16,23 +17,13 @@ export default function Register() {
     }
 
     //VALIDATING FORM
-    const [validation, setValidation] = useState({ validEmail: false, validPassword: false, passwordsMatch: false })
+    const [validation, setValidation] = useState({ validPassword: false, passwordsMatch: false })
 
     useEffect(() => {
-        handleEmail()
         handlePassword()
         handlePassword2()
     }, [values])
 
-    function handleEmail() {
-        const { email } = values
-        const emailIsValid = /[\w]+@[\w]+.(com|br|net)$/.test(email)
-
-        setValidation(prevState => ({ 
-            ...prevState,
-            validEmail: emailIsValid
-        }))
-    }
     function handlePassword() {
         const { password="" } = values
         const passwordIsValid = (
@@ -63,9 +54,6 @@ export default function Register() {
         for(let check in validation){
             if(!validation[check]){
                 switch(check){
-                    case "validEmail":
-                        alert("Insira um email válido!")
-                        break
                     case "validPassword":
                         alert("Insira uma senha válida!")
                         break
@@ -77,7 +65,6 @@ export default function Register() {
             }
         }
 
-
         delete values.password2
         axios.post("http://localhost:8080", values)
         .then(res => console.log(res.data))
@@ -85,38 +72,37 @@ export default function Register() {
     }
 
     //TRIGGER PASSWORD VIEWING
+    const [passwordInputType, setPasswordInputType] = useState("password")
+
     function handleViewPassword() {
-        alert("View password changed")
-    }
+        passwordInputType === "password" 
+            ? setPasswordInputType("text")
+            : setPasswordInputType("password")
+    }s
         
     return (
         <TemplateDefault>
-            <main className="container">
-                <h1>Cadastrar</h1>
-
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <div className="inputbox">
-                        <label htmlFor="name">Usuário</label>
-                        <input type="text" id="name" required onChange={e => handleChange(e)} className={styles.colorfont} />
-                    </div>
-                    <div className="inputbox">
-                        <label htmlFor="email">E-mail</label>
-                        <input type="text" id="email" required onChange={e => handleChange(e)} className={styles.colorfont} />
-                    </div>
-                    <div className="inputbox">
-                        <label htmlFor="password">Senha</label>
-                        <input type="text" id="password" placeholder="Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula" required onChange={e => handleChange(e)} className={styles.colorfont} />
-                        <button onClick={handleViewPassword}>VER</button> {/* colocar ícone do olhinho */}
-                        <img src={eyeIcon.src} />
-                    </div>
-                    <div className="inputbox">
-                        <label htmlFor="password2">Senha</label>
-                        <input type="text" id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.colorfont} />
-                    </div>
-
-                    <button type="submit">Cadastrar</button>
-                </form>
-                
+            <main className={styles.container}>
+                <div className={styles.overlay}>
+                    <h1>Cadastrar</h1>
+                    <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}> 
+                        <input type="text" id="name" required placeholder="Nome" onChange={e => handleChange(e)} className={styles.input} />
+                        <input type="email" id="email" required placeholder="E-mail" onChange={e => handleChange(e)} className={styles.input} />
+                        <input type={passwordInputType} id="password" placeholder="Senha" required onChange={e => handleChange(e)} className={styles.input} />
+                        <button type="button" onClick={handleViewPassword} className={styles.btnViewPassword}>
+                            {
+                                passwordInputType === "text"
+                                ? <FontAwesomeIcon icon={faEye} className={styles.btnView} />
+                                : <FontAwesomeIcon icon={faEyeSlash} className={styles.btnView} />
+                            }
+                        </button>
+                        <span className={styles.passwordFooter}>
+                            Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula
+                        </span>
+                        <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />                        
+                        <button className={styles.btnRegister}>Cadastrar</button>
+                    </form>
+                </div>  
             </main>
         </TemplateDefault>
     )
