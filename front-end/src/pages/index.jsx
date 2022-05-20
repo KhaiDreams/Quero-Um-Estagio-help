@@ -31,7 +31,7 @@ export default function Home() {
                 </div>
 
                     <div className={styles2.div_merecemos}>
-                        <h1 className={styles2.h1_merecemos}>Por que nós merecemos!</h1>
+                        <h1 className={styles2.h1_merecemos}>Três coders, um sonho: ter renda fixa!</h1>
                     </div>
             </div>
 
@@ -73,7 +73,7 @@ export default function Home() {
 
             <div className={styles3.projects_background}>
                     <div className={styles3.nossos_projetos}>
-                        <h1 className={styles3.h1_nossos_projetos}>Da uma olhada nos projetos 🔥</h1>
+                        <h1 className={styles3.h1_nossos_projetos}>Dá uma olhada nos projetos 🔥</h1>
                     </div>
 
                     <div className={styles3.container_projetos}>

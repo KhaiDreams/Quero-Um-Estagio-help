@@ -1,29 +1,45 @@
-import { useState, useEffect } from "react"
 import axios from "axios"
+import { useState, useEffect } from "react"
 
 import TemplateDefault from "../../templates/Default"
 
 import styles from "../../styles/users/register/register.module.css"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons"
+import { 
+    faEye, 
+    faEyeSlash,
+    faEnvelope,
+} from "@fortawesome/free-regular-svg-icons"
+import { 
+    faCircleUser,
+    faClipboardQuestion,
+    faClipboardCheck,
+} from "@fortawesome/free-solid-svg-icons"
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Register() {
     //SAVING INPUTS
     const [values, setValues] = useState({})
-
     function handleChange(e) {
         setValues({ ...values, [e.target.id]: e.target.value })
     }
-
-    //VALIDATING FORM
-    const [validation, setValidation] = useState({ validPassword: false, passwordsMatch: false })
-
     useEffect(() => {
         handlePassword()
         handlePassword2()
     }, [values])
 
+    //VALIDATING FORM
+    const [validation, setValidation] = useState({ 
+        validPassword: false, 
+        passwordsMatch: false 
+    })
+
+    const [passwordRequirements, setPasswordRequirements] = useState({ 
+        fiveChars: false, 
+        oneSpecial: false, 
+        oneUppercase: false 
+    })
     function handlePassword() {
         const { password="" } = values
         const passwordIsValid = (
@@ -35,6 +51,12 @@ export default function Register() {
         setValidation(prevState => ({ 
             ...prevState,
             validPassword: passwordIsValid
+        }))
+
+        setPasswordRequirements(({
+            fiveChars: password.length >= 5, 
+            oneSpecial: /['-="!@#$%¨&*()_+]/.test(password), 
+            oneUppercase: /[A-Z]/.test(password) 
         }))
     }
     function handlePassword2() {
@@ -78,28 +100,63 @@ export default function Register() {
         passwordInputType === "password" 
             ? setPasswordInputType("text")
             : setPasswordInputType("password")
-    }s
+    }
         
     return (
         <TemplateDefault>
             <main className={styles.container}>
                 <div className={styles.overlay}>
                     <h1>Cadastrar</h1>
+
                     <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}> 
-                        <input type="text" id="name" required placeholder="Nome" onChange={e => handleChange(e)} className={styles.input} />
-                        <input type="email" id="email" required placeholder="E-mail" onChange={e => handleChange(e)} className={styles.input} />
-                        <input type={passwordInputType} id="password" placeholder="Senha" required onChange={e => handleChange(e)} className={styles.input} />
-                        <button type="button" onClick={handleViewPassword} className={styles.btnViewPassword}>
+                        <div className={styles.inputBox}>
+                            <FontAwesomeIcon icon={faCircleUser} className={styles.icon} />
+                            <input type="text" id="name" required placeholder="Nome" onChange={e => handleChange(e)} className={styles.input} />
+                        </div>
+
+                        <div className={styles.inputBox}>
+                            <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+                            <input type="email" id="email" required placeholder="E-mail" onChange={e => handleChange(e)} className={styles.input} />
+                        </div>
+
+                        <div>
+                            <div className={styles.inputBox}>
+                                {
+                                    validation.validPassword
+                                    ? <FontAwesomeIcon icon={faClipboardCheck} className={styles.icon} />
+                                    : <FontAwesomeIcon icon={faClipboardQuestion} className={styles.icon} />
+                                }
+                                <input type={passwordInputType} id="password" placeholder="Senha" required onChange={e => handleChange(e)} className={styles.input} />
+                                <button type="button" onClick={handleViewPassword} className={`${styles.btnViewPassword} ${styles.icon}`}>
+                                    {
+                                        passwordInputType === "text"
+                                        ? <FontAwesomeIcon icon={faEye} />
+                                        : <FontAwesomeIcon icon={faEyeSlash} />
+                                    }
+                                </button>
+                            </div>
+                            <ul>
+                                <li className={passwordRequirements.fiveChars ? styles.oddOut : ""}>
+                                    5 Caracteres
+                                </li>
+                                <li className={passwordRequirements.oneSpecial ? styles.oddOut : ""}>
+                                    1 Caractere Especial
+                                </li>
+                                <li className={passwordRequirements.oneUppercase ? styles.oddOut : ""}>
+                                    1 Letra Maiúscula
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div className={styles.inputBox}>
                             {
-                                passwordInputType === "text"
-                                ? <FontAwesomeIcon icon={faEye} className={styles.btnView} />
-                                : <FontAwesomeIcon icon={faEyeSlash} className={styles.btnView} />
+                                validation.passwordsMatch
+                                ? <FontAwesomeIcon icon={faClipboardCheck} />
+                                : <FontAwesomeIcon icon={faClipboardQuestion} />
                             }
-                        </button>
-                        <span className={styles.passwordFooter}>
-                            Mínimo: 5 caracteres, 1 caractere especial e 1 letra maiúscula
-                        </span>
-                        <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />                        
+                            <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />                        
+                        </div>
+
                         <button className={styles.btnRegister}>Cadastrar</button>
                     </form>
                 </div>  

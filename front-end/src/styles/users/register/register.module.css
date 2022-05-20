@@ -17,6 +17,7 @@
 }
 
 .overlay h1 {
+    text-transform: uppercase;
     text-align: center;
     font-size: 56px;
     margin-bottom: 40px;
@@ -25,6 +26,13 @@
 .form {
     display: flex;
     flex-direction: column;
+    gap: 25px;
+}
+
+.inputBox {
+    width: 35vw;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .input {
@@ -32,4 +40,39 @@
     border: none;
     outline: none;
     background: transparent;
+}
+
+.input::placeholder {
+    color: white;
+}
+
+.inputBox:hover,
+.inputBox:focus-within {
+    border-bottom: 1px solid black;
+    transition: .3s;
+}
+
+.input:valid {
+    border-bottom: 1px solid white;
+}
+
+.inputBox ul {
+
+}
+
+.icon {
+
+}
+
+.btnViewPassword {
+    border: none;
+}
+
+.oddOut {
+    text-decoration: line-through;
+}
+
+.btnRegister {
+    width: 20vw;
+    justify-self: center;
 }
