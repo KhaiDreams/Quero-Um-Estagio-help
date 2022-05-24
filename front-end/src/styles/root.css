@@ -1,4 +1,26 @@
 :root {
-    --menu-font-size: 22px;
-    --menu-font-color: rgb(237, 237, 237);
+--black: #000;
+--white: #fff;
+--red: #cc1111;
+
+
+
+--menu-button-font-size: 22px;
+--menu-button-hover-color: rgb(182, 9, 9);
+
+--background-black: rgb(0, 0, 0);
+--background-black-card: rgb(0, 0, 0);
+
+--cards-border-red: #ff0101d9;
+--cards-name-red: rgb(192, 9, 9);
+--cards-name-hover-red: rgb(255, 0, 0);
+--cards-shadow-red: rgb(255 23 23 / 24%);
+--cards-text-shadow-red: rgba(255, 0, 0, 0.613);
+
+--home-red-color: rgb(187, 23, 23);
+--home-red-shadow-color: rgba(255, 0, 0, 0.261);
+
+
+
+--line-red-color: rgba(197, 16, 16, 0.334);
 } 

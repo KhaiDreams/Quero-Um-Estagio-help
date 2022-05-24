@@ -8,45 +8,72 @@
 }
 
 .overlay {
-    width: 50vw;
-    background-color: rgba(202, 0, 0, 0.897) !important;
+    margin: 3% 0 0 0;
+    
+    width: 45%;
+    background-color: rgba(0, 0, 0, 0.897) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 25px 1px rgb(255, 255, 255, 0.4);
+    
+    border-radius: 20px;
 }
 
 .overlay h1 {
     text-transform: uppercase;
     text-align: center;
     font-size: 56px;
-    margin-bottom: 40px;
+    margin: 8px 0 40px 0;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-left: 8%;
+    
     gap: 25px;
+
+    font-size: 21px;
 }
 
 .inputBox {
     width: 35vw;
     display: flex;
     justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
 .input {
     width: 80%;
+
     border: none;
+
+    border-bottom: 2px solid rgba(255, 255, 255, 0);
+    
     outline: none;
     background: transparent;
+    margin: 0 2px 0 8px;
+
+    transition-duration: 200ms;
+    font-size: 18px;
+}
+
+.input:focus-within {
+    border-bottom: 2px solid rgb(255, 255, 255);
+    transition: 200ms;
+}
+
+.input:valid {
+    border-bottom: 2px solid rgb(34, 255, 0);
+    transition: 200ms;
 }
 
 .input::placeholder {
     color: white;
 }
 
-.inputBox:hover,
+/* .inputBox:hover,
 .inputBox:focus-within {
     border-bottom: 1px solid black;
     transition: .3s;
@@ -54,15 +81,7 @@
 
 .input:valid {
     border-bottom: 1px solid white;
-}
-
-.inputBox ul {
-
-}
-
-.icon {
-
-}
+} */
 
 .btnViewPassword {
     border: none;
@@ -72,7 +91,57 @@
     text-decoration: line-through;
 }
 
+.buttonDiv {
+    padding: 0 60px 20px 0;
+}
+
 .btnRegister {
-    width: 20vw;
+    width: 16vw;
+    height: 50px;
     justify-self: center;
+    border: 2px solid white;
+
+    padding: 10 px;
+    font-size: 30px;
+
+    border-radius: 20px;
+
+    transition-duration: 300ms;
+}
+
+.btnRegister:hover {   
+    border: 2px solid rgb(17, 255, 0);
+    box-shadow: 0 0 20px rgba(17, 255, 0, 0.166);
+    cursor: pointer;
+
+    transition: 100ms ease-in-out;
+}
+
+.formDiv {
+    display: flex;
+}
+
+.dependencesDiv {
+    padding: 10px 0 0 0;
+
+    font-size: 14px;
+}
+
+.dependencesDiv li {
+    list-style: inside;
+}
+
+.cadastrar {
+    transition-duration: 200ms;
+}
+
+.cadastrar:hover {
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.275);
+    
+    transition: 200ms;
+}
+
+.greenborder {
+    border-bottom: 2px solid rgb(13, 255, 1);
 }

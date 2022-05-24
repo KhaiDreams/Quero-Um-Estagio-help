@@ -17,6 +17,9 @@ import {
     faClipboardCheck,
 } from "@fortawesome/free-solid-svg-icons"
 
+
+
+
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Register() {
     //SAVING INPUTS
@@ -101,64 +104,75 @@ export default function Register() {
             ? setPasswordInputType("text")
             : setPasswordInputType("password")
     }
-        
+
+
     return (
         <TemplateDefault>
             <main className={styles.container}>
                 <div className={styles.overlay}>
-                    <h1>Cadastrar</h1>
+                    <h1 className={styles.cadastrar}>Cadastrar</h1>
 
-                    <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}> 
-                        <div className={styles.inputBox}>
-                            <FontAwesomeIcon icon={faCircleUser} className={styles.icon} />
-                            <input type="text" id="name" required placeholder="Nome" onChange={e => handleChange(e)} className={styles.input} />
-                        </div>
+                    <div className={styles.formDiv}>
+                        <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}> 
+                            <div className={styles.inputBox}>
+                                <FontAwesomeIcon icon={faCircleUser} className={styles.icon} />
+                                <input type="text" id="name" required placeholder="Nome" onChange={e => handleChange(e)} className={styles.input}/>
+                            </div>
 
-                        <div className={styles.inputBox}>
-                            <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
-                            <input type="email" id="email" required placeholder="E-mail" onChange={e => handleChange(e)} className={styles.input} />
-                        </div>
+                            <div className={styles.inputBox}>
+                                <FontAwesomeIcon icon={faEnvelope} className={styles.icon} />
+                                <input type="email" id="email" required placeholder="E-mail" onChange={e => handleChange(e)} className={styles.input} />
+                            </div>
 
-                        <div>
+                            <div>
+                                <div className={styles.inputBox}>
+                                    {
+                                        validation.validPassword
+                                        ? <FontAwesomeIcon icon={faClipboardCheck} className={styles.icon} />
+                                        : <FontAwesomeIcon icon={faClipboardQuestion} className={styles.icon} />
+                                    }
+                                    <input type={passwordInputType} id="password" placeholder="Senha" required onChange={e => handleChange(e)} className={styles.input} />
+                                    <button type="button" onClick={handleViewPassword} className={`${styles.btnViewPassword} ${styles.icon}`}>
+                                        {
+                                            passwordInputType === "text"
+                                            ? <FontAwesomeIcon icon={faEye} />
+                                            : <FontAwesomeIcon icon={faEyeSlash} />
+                                        }
+                                    </button>
+                                </div>
+
+                                <ul className={styles.dependencesDiv}>
+                                    <li className={passwordRequirements.fiveChars ? styles.oddOut : ""}>
+                                        5 Caracteres
+                                    </li>
+                                    <li className={passwordRequirements.oneSpecial ? styles.oddOut : ""}>
+                                        1 Caractere Especial
+                                    </li>
+                                    <li className={passwordRequirements.oneUppercase ? styles.oddOut : ""}>
+                                        1 Letra Maiúscula
+                                    </li>
+                                </ul>
+                            </div>
+
                             <div className={styles.inputBox}>
                                 {
-                                    validation.validPassword
-                                    ? <FontAwesomeIcon icon={faClipboardCheck} className={styles.icon} />
-                                    : <FontAwesomeIcon icon={faClipboardQuestion} className={styles.icon} />
+                                    validation.passwordsMatch
+                                    ? <FontAwesomeIcon icon={faClipboardCheck} />
+                                    : <FontAwesomeIcon icon={faClipboardQuestion} />
                                 }
-                                <input type={passwordInputType} id="password" placeholder="Senha" required onChange={e => handleChange(e)} className={styles.input} />
-                                <button type="button" onClick={handleViewPassword} className={`${styles.btnViewPassword} ${styles.icon}`}>
-                                    {
-                                        passwordInputType === "text"
-                                        ? <FontAwesomeIcon icon={faEye} />
-                                        : <FontAwesomeIcon icon={faEyeSlash} />
-                                    }
-                                </button>
+                                {
+                                    validation.passwordsMatch
+                                    ? <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={`${styles.input} ${styles.greenborder}`} />
+                                    : <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />
+                                }
+                                {/* <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={`${styles.input} ${styles.greenborder}`} />                         */}
                             </div>
-                            <ul>
-                                <li className={passwordRequirements.fiveChars ? styles.oddOut : ""}>
-                                    5 Caracteres
-                                </li>
-                                <li className={passwordRequirements.oneSpecial ? styles.oddOut : ""}>
-                                    1 Caractere Especial
-                                </li>
-                                <li className={passwordRequirements.oneUppercase ? styles.oddOut : ""}>
-                                    1 Letra Maiúscula
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className={styles.inputBox}>
-                            {
-                                validation.passwordsMatch
-                                ? <FontAwesomeIcon icon={faClipboardCheck} />
-                                : <FontAwesomeIcon icon={faClipboardQuestion} />
-                            }
-                            <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />                        
-                        </div>
-
-                        <button className={styles.btnRegister}>Cadastrar</button>
-                    </form>
+                            
+                            <div className={styles.buttonDiv}>
+                                <button className={styles.btnRegister}>Cadastrar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>  
             </main>
         </TemplateDefault>

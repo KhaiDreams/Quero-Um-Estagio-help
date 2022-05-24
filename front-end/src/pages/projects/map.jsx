@@ -2,6 +2,11 @@ import { useState, useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import axios from "axios"
 
+<<<<<<< HEAD
+=======
+import styles from "../../styles/projects/map/map.module.css"
+
+>>>>>>> f032ea8609f7f041b6a89512e77388e4df70903e
 export default function Map() {
     const [data, setData] = useState([])
 
@@ -17,7 +22,7 @@ export default function Map() {
      
     return (
         <main>
-            <MapContainer center={[-23.6334841179179, -46.46843854558035]} zoom={13} scrollWheelZoom={true}>
+            <MapContainer className={styles.leaftletcontainer} center={[-23.6334841179179, -46.46843854558035]} zoom={13} scrollWheelZoom={true}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
