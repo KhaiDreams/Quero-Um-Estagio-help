@@ -7,13 +7,17 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    list-style-type: none; 
+    text-decoration: none;
 }
 
 .ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: var(--menu-font-size);
+    font-size: var(--menu-button-font-size);
+    list-style-type: none; 
+    text-decoration: none;
 }
 
 .li {
@@ -30,6 +34,7 @@
 
 .texto {
     position: relative;
+    
 }
 
 .content_loginregister {
@@ -47,13 +52,15 @@
     cursor: pointer;
 
     transition-duration: 130ms;
+    
 }
 
 .button:hover {
-    border: 2px solid rgb(182, 9, 9);
+    border: 2px solid var(--menu-button-hover-color);
     box-shadow: 0 0 2px white;
 
     transition: 130ms;
+    
 }
 
 .texto_loginregister {
