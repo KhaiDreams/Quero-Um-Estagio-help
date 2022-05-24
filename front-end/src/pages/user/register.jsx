@@ -160,12 +160,8 @@ export default function Register() {
                                     ? <FontAwesomeIcon icon={faClipboardCheck} />
                                     : <FontAwesomeIcon icon={faClipboardQuestion} />
                                 }
-                                {
-                                    validation.passwordsMatch
-                                    ? <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={`${styles.input} ${styles.greenborder}`} />
-                                    : <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />
-                                }
-                                {/* <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={`${styles.input} ${styles.greenborder}`} />                         */}
+
+                                <input type={passwordInputType} id="password2" placeholder="Repita a senha" required onChange={e => handleChange(e)} className={styles.input} />
                             </div>
                             
                             <div className={styles.buttonDiv}>
