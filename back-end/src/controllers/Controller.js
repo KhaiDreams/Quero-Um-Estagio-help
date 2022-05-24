@@ -1,7 +1,16 @@
 const User = require("../models/User") 
+const Map = require("../models/Map") 
 
 async function get(req, res) {
     res.send("FUNÇÃO GET_ALL");
+}
+
+async function getMap(req, res) {
+    const map = new Map()
+    
+    await map.getAllLocations()
+        .then(result => res.send(result))
+        .catch(err => res.send(`Failed to load locations - ERROR: ${err}`))
 }
 
 async function post(req, res) {
