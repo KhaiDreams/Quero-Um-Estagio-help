@@ -2,8 +2,11 @@ import { useState, useEffect } from "react"
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import axios from "axios"
 
+<<<<<<< HEAD
+=======
 import styles from "../../styles/projects/map/map.module.css"
 
+>>>>>>> f032ea8609f7f041b6a89512e77388e4df70903e
 export default function Map() {
     const [data, setData] = useState([])
 
@@ -29,7 +32,7 @@ export default function Map() {
                 </Marker>
                 {
                     data?.map(loc => (
-                        <Marker key={data.id} position={[loc.latitude, loc.longitude]}>
+                        <Marker key={loc.id} position={[loc.latitude, loc.longitude]}>
                             <Popup>{loc.name}</Popup>
                         </Marker>
                     ))
