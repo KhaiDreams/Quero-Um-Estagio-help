@@ -92,8 +92,8 @@ export default function Register() {
 
         delete values.password2
         axios.post("http://localhost:8080", values)
-        .then(res => console.log(res.data))
-        .catch(res => console.log(res))
+            .then(res => console.log(res.data))
+            .catch(res => console.log(res))
     }
 
     //TRIGGER PASSWORD VIEWING

@@ -31,8 +31,8 @@ async function del(req, res) {
 }
 
 module.exports = {
-    get,
+    get, getMap,
     post,
     put,
-    del,
+    del
 }

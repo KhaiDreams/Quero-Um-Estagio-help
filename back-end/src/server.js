@@ -3,7 +3,7 @@ const express = require("express"), app = express()
 const cors = require("cors")
 require("dotenv").config()
 
-const db = require("./config/database")
+const db = require("./database/db")
 const routes = require("./routes/index")
 
 //ENABLING SERVER TO RECEIVE JSON DATA VIA POST METHOD
