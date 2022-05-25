@@ -1,15 +1,14 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-<<<<<<< HEAD
 import { useRouter } from "next/router"
+import Link from "react-scroll/modules/components/Link"
 
-=======
->>>>>>> 1a3b740ae621e3cda46309f9323cb3ba10dab247
 import TemplateDefault from "../../templates/Default"
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons"
 import styles from "../../styles/users/login/login.module.css"
-import Link from "react-scroll/modules/components/Link"
+
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Login() {
