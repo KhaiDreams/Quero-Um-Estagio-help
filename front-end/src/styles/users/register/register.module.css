@@ -2,7 +2,7 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
     min-height: 100vh;
-    background-color: black !important;
+    background-color: var(--black) !important;
     align-items: flex-start;
     justify-content: center;
 }
@@ -11,7 +11,7 @@
     margin: 3% 0 0 0;
     
     width: 45%;
-    background-color: rgba(0, 0, 0, 0.897) !important;
+    background-color: var(--black) !important;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,28 +60,18 @@
 }
 
 .input:focus-within {
-    border-bottom: 2px solid rgb(255, 255, 255);
-    transition: 200ms;
-}
-
-.input:valid {
-    border-bottom: 2px solid rgb(34, 255, 0);
+    border-bottom: 2px solid var(--white);
     transition: 200ms;
 }
 
 .input::placeholder {
-    color: white;
-}
-
-/* .inputBox:hover,
-.inputBox:focus-within {
-    border-bottom: 1px solid black;
-    transition: .3s;
+    color: var(--white);
 }
 
 .input:valid {
-    border-bottom: 1px solid white;
-} */
+    border-bottom: 2px solid var(--register-valid-input);
+    transition: 200ms;
+}
 
 .btnViewPassword {
     border: none;
@@ -96,12 +86,11 @@
 }
 
 .btnRegister {
-    width: 16vw;
+    width: 180px;
     height: 50px;
     justify-self: center;
-    border: 2px solid white;
+    border: 2px solid var(--white);
 
-    padding: 10 px;
     font-size: 30px;
 
     border-radius: 20px;
@@ -110,8 +99,8 @@
 }
 
 .btnRegister:hover {   
-    border: 2px solid rgb(17, 255, 0);
-    box-shadow: 0 0 20px rgba(17, 255, 0, 0.166);
+    border: 2px solid var(--register-button-color);
+    box-shadow: 0 0 20px var(--register-button-shadow-color);
     cursor: pointer;
 
     transition: 100ms ease-in-out;
@@ -140,8 +129,4 @@
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.275);
     
     transition: 200ms;
-}
-
-.greenborder {
-    border-bottom: 2px solid rgb(13, 255, 1);
 }

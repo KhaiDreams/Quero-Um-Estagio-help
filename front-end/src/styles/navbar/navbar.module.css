@@ -7,8 +7,7 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    list-style-type: none; 
-    text-decoration: none;
+
 }
 
 .ul {
@@ -16,8 +15,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: var(--menu-button-font-size);
-    list-style-type: none; 
-    text-decoration: none;
+
 }
 
 .li {
