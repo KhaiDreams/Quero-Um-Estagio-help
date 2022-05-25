@@ -57,15 +57,6 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className={styles2.div_equip}>
-                                <img src={cardalexandre.src} alt="" className={styles2.cards}/>
-                        <p className={styles2.p_name_alexandre}>ALEXANDRE</p>
-                        <p className={styles2.p_function_alexandre}>BACK-END</p>
-                        <p className={styles2.p_description_alexandre}>
-                            Não sabe fazer nada, mas é o responsável por todos os projetos do site.
-                        </p>
-                    </div>
-
                 </div>
             </div>
 
