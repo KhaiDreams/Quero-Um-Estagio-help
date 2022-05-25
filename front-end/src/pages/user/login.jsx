@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { useRouter } from "next/router"
 
 import TemplateDefault from "../../templates/Default"
 
@@ -18,15 +19,6 @@ export default function Login() {
         setValues({ ...values, [e.target.id]: e.target.value })
     }
 
-    //SUBMITING
-    function handleSubmit(e) {
-        e.preventDefault()
-
-        axios.get("http://localhost:8080", values)
-            .then(res => console.log(res.data))
-            .catch(res => console.log(res))
-    }
-
     //TRIGGER PASSWORD VIEWING
     const [passwordInputType, setPasswordInputType] = useState("password")
 
@@ -35,6 +27,26 @@ export default function Login() {
             ? setPasswordInputType("text")
             : setPasswordInputType("password")
     }
+
+    //SUBMITING
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        const res = await axios.get("http://localhost:8080", values)
+            .then(res => res.data)
+            .catch(err => console.error(err))
+        
+        setLogged(res)
+    }
+
+    //LOGIN
+    const [logged, setLogged] = useState(false)
+
+    useEffect(() => {
+        const router = useRouter()
+
+        logged ? router.redirect("/") : "AVISO DE LOGIN INVÁLIDO"
+    }, [logged])
 
     return (
         <TemplateDefault>
@@ -49,7 +61,7 @@ export default function Login() {
                             </div>
 
                             <div>
-                                <input type="password" id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
+                                <input type={passwordInputType} id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
                                 <button type="button" onClick={handleViewPassword}>
                                         {
                                             passwordInputType === "text"
