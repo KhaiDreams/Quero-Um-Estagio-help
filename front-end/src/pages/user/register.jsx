@@ -140,7 +140,7 @@ export default function Register() {
                                         }
                                     </button>
                                 </div>
-
+                                
                                 <ul className={styles.dependencesDiv}>
                                     <li className={passwordRequirements.fiveChars ? styles.oddOut : ""}>
                                         5 Caracteres
@@ -152,6 +152,7 @@ export default function Register() {
                                         1 Letra Maiúscula
                                     </li>
                                 </ul>
+
                             </div>
 
                             <div className={styles.inputBox}>

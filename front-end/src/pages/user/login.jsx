@@ -1,13 +1,10 @@
 import axios from "axios"
 import { useState, useEffect } from "react"
-
 import TemplateDefault from "../../templates/Default"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { 
-    faEye, 
-    faEyeSlash
-} from "@fortawesome/free-regular-svg-icons"
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons"
+import styles from "../../styles/users/login/login.module.css"
+import Link from "react-scroll/modules/components/Link"
 
 //obs: mds que sono vontade de morrer xande vc me paga
 export default function Login() {
@@ -36,21 +33,35 @@ export default function Login() {
             : setPasswordInputType("password")
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return (
         <TemplateDefault>
-            <main>
-                <div>
-                    <h1>Login</h1>
+            <main className={styles.container}>
+                <div className={styles.overlay}>
+                    <h1 className={styles.login}>LOGIN</h1>
 
-                    <div>
-                        <form autoComplete="off" onSubmit={handleSubmit}> 
-                            <div>
-                                <input type="text" id="user" required placeholder="Usuário" onChange={e => handleChange(e)} />
+                    <div className={styles.formDiv}>
+                        <form className={styles.form} autoComplete="off" onSubmit={handleSubmit}> 
+                            <div className={styles.inputBox}>
+                                <input className={styles.input} type="text" id="user" required placeholder="Email ou Usuário" onChange={e => handleChange(e)} />
                             </div>
 
-                            <div>
-                                <input type="password" id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
-                                <button type="button" onClick={handleViewPassword}>
+                            <div className={styles.inputBox}>
+                                <input className={styles.input} type="password" id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
+                                <button className={`${styles.btnViewPassword} ${styles.icon}`} type="button" onClick={handleViewPassword}>
                                         {
                                             passwordInputType === "text"
                                             ? <FontAwesomeIcon icon={faEye} />
@@ -58,9 +69,13 @@ export default function Login() {
                                         }
                                 </button>
                             </div>
+
+                            <div className={styles.doesNotContainDiv}>
+                                <Link className={styles.doesNotContain} href="user/register">Ainda não registrado?</Link>
+                            </div>
                             
-                            <div>
-                                <button>Login</button>
+                            <div className={styles.buttonDiv}>
+                                <button className={styles.btnRegister}>Login</button>
                             </div>
                         </form>
                     </div>
