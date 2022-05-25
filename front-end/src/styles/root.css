@@ -27,10 +27,16 @@
 
 --projects-container-border: rgba(200, 200, 200, 0.835);
 --projects-container-shadow: #ffffff1f;
+--projects-shadow-white: rgba(255, 255, 255, 0.24);
+--projects-cep-shadow-white: rgba(255, 255, 255, 0.119);
+--projects-background-blackgrey: rgba(19, 19, 19, 0.329);
+--projects-inputborder-white: #e7e7e7b2;
+--projects-inputborder-focus-white: #ffffffe5;
+--projects-formcep-div-shadow: #ffffff28;
 
 
 
---register-valid-input: rgb(34, 255, 0);
+--register-valid-input: rgba(34, 255, 0, 0.824);
 --register-button-color: rgb(34, 255, 0);
 --register-button-shadow-color: rgba(17, 255, 0, 0.166);
 } 
