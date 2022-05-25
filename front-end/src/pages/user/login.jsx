@@ -29,7 +29,6 @@ export default function Login() {
             : setPasswordInputType("password")
     }
 
-<<<<<<< HEAD
     //SUBMITING
     async function handleSubmit(e) {
         e.preventDefault()
@@ -49,21 +48,6 @@ export default function Login() {
 
         logged ? router.redirect("/") : "AVISO DE LOGIN INVÁLIDO"
     }, [logged])
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 1a3b740ae621e3cda46309f9323cb3ba10dab247
 
     return (
         <TemplateDefault>
@@ -77,15 +61,9 @@ export default function Login() {
                                 <input className={styles.input} type="text" id="user" required placeholder="Email ou Usuário" onChange={e => handleChange(e)} />
                             </div>
 
-<<<<<<< HEAD
-                            <div>
-                                <input type={passwordInputType} id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
-                                <button type="button" onClick={handleViewPassword}>
-=======
                             <div className={styles.inputBox}>
                                 <input className={styles.input} type="password" id="password" required placeholder="Senha" onChange={e => handleChange(e)} />
                                 <button className={`${styles.btnViewPassword} ${styles.icon}`} type="button" onClick={handleViewPassword}>
->>>>>>> 1a3b740ae621e3cda46309f9323cb3ba10dab247
                                         {
                                             passwordInputType === "text"
                                             ? <FontAwesomeIcon icon={faEye} />
